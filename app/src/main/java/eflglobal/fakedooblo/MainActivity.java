@@ -51,16 +51,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchSocialVerify(){
-        try {
-            Intent inent = new Intent("eflglobal.socialverify.EFLGLOBAL_SOCIAL_VERIFY");
-            inent.putExtra("id", Integer.parseInt(mEditText.getText().toString()) );
-            startActivityForResult(inent, 42);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            Toast.makeText(this,"NumberFormatException", Toast.LENGTH_LONG).show();
-        } catch (ActivityNotFoundException e){
-
-        }
+       if(!mEditText.getText().toString().isEmpty()) {
+           Intent inent = new Intent("eflglobal.socialverify.EFLGLOBAL_SOCIAL_VERIFY");
+           inent.putExtra("id", mEditText.getText().toString());
+           startActivityForResult(inent, 42);
+       }else {
+           Toast.makeText(this,"enter id ", Toast.LENGTH_LONG).show();
+       }
     }
 
     @Override
